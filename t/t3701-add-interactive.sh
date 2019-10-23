@@ -282,11 +282,11 @@ test_expect_success 'different prompts for mode change/deleted' '
 	rm deleted &&
 	test_write_lines n n n |
 	git -c core.filemode=true add -p >actual &&
-	sed -n "s/^\(([0-9/]*) Stage .*?\).*/\1/p" actual >actual.filtered &&
+	sed -n "s/^\(Stage .*?\).*/\1/p" actual >actual.filtered &&
 	cat >expect <<-\EOF &&
-	(1/1) Stage deletion [y,n,q,a,d,?]?
-	(1/2) Stage mode change [y,n,q,a,d,j,J,g,/,?]?
-	(2/2) Stage this hunk [y,n,q,a,d,K,g,/,e,?]?
+	Stage deletion [y,n,q,a,d,?]?
+	Stage mode change [y,n,q,a,d,j,J,g,/,?]?
+	Stage this hunk [y,n,q,a,d,K,g,/,e,?]?
 	EOF
 	test_cmp expect actual.filtered
 '
